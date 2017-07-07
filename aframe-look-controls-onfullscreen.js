@@ -20,17 +20,8 @@ AFRAME.registerComponent("look-controls-onfullscreen", {
     }
   },
 
-  update: function() {
-    this.el.addEventListener('enter-vr', () => {
-      this.onEnterFullscreen();
-    });
-
-    this.el.addEventListener('exit-vr', () => {
-      this.onExitFullscreen();
-    });
-  },
-
-  tick: function() {
-
+  init: function() {
+    this.el.addEventListener('enter-vr', this.onEnterFullscreen.bind(this));
+    this.el.addEventListener('exit-vr', this.onExitFullscreen.bind(this));
   }
 });
